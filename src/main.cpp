@@ -152,63 +152,57 @@ void pwrChk(){
 
 void going(char p){
   switch (p){
-      case 8:
+      case 56: //8
         moveForw();
-        Serial.println("forward");
-       // m = 0;
        break;
 
-      case 115:
+      case 115:  //s for spin
         rotLeft();
-        Serial.println("rotate left");
-        m = 0;
        break;
 
-      case 9:
+      case 57:  //9
         forwRight();
-        Serial.println("forward right");
-        m = 0;
        break;
        
-      case 7:
+      case 55:  //7
         forwLeft();
-        Serial.println("");
-        m = 0;
-
        break;
        
-      case 4:
+      case 52:  //4
         moveLeft();
        break;
 
-      case 6:
+      case 54: //6
         moveRight();
        break;
 
-      case 1:
+      case 49:  //1
         backLeft();
        break;
 
-      case 3:
+      case 51:  //3
         backRight();
        break;
 
-      case 2:
+      case 50:  //2
         moveBack();
        break;
        
-      case 5:
+      case 53:  //5
         rotRight();
        break;
        
       
 
-      case 116:
+      case 116: //t for toggle
+        digitalWrite(xyEn, !digitalRead(xyEn));
+        digitalWrite(zEn, !digitalRead(zEn));
        
        break;
 
        default:
         stap();
+        Serial.println("stopping");
        break;  
     }
 }
@@ -218,7 +212,11 @@ void look(){
     Serial.print("reading serial");
     dataIn = Serial.read();
     Serial.println(dataIn);
+    
+    going(dataIn);
+    
     //m = dataIn;
+    /*
     if (dataIn == 48) {
      //m = 0;
      stap();
@@ -270,7 +268,7 @@ void look(){
     if (dataIn == 14) {
       m = 14;
     }
-
+*/
    }
    if (Serial1.available()>0){
      Serial.print("serial1 recvd:");
