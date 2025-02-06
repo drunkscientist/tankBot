@@ -192,7 +192,9 @@ void going(char p){
         rotRight();
        break;
        
-      
+      case 48:  //0
+        stap();
+       break;
 
       case 116: //t for toggle
         digitalWrite(xyEn, !digitalRead(xyEn));
@@ -201,8 +203,8 @@ void going(char p){
        break;
 
        default:
-        stap();
-        Serial.println("stopping");
+        //stap();
+        Serial.println("do nothing maybe? lotta noise");
        break;  
     }
 }
